@@ -1,0 +1,40 @@
+<div class="footer {{ 'dark' if dark }}">
+    {% block footer -%}
+        {%- set indico -%}
+            <a href="https://getindico.io">Indico</a>
+        {%- endset -%}
+        <div class="flexrow f-j-space-between">
+            <div class="flexrow f-a-center">
+                <div style="margin-left: 1em;">
+                </div>
+            </div>
+            <ul class="footer-links">
+                </li>
+                {% if indico_config.PUBLIC_SUPPORT_EMAIL %}
+                    <li>
+                        <a href="{{ url_for('core.contact') }}">
+                            {% trans %}Contact{% endtrans %}
+                        </a>
+                    </li>
+                {% endif %}
+                {% for item in template_hook('page-footer', as_list=true) %}
+                    <li>
+                        {{ item }}
+                    </li>
+                {% endfor %}
+                    <li>
+                        <span>{% trans %}Powered by {{ indico }}{% endtrans %}</span>
+                    </li>
+            </ul>
+            <div class="footer-extra">
+                {% block footer_extra %}
+                {% endblock %}
+            </div>
+        </div>
+    {% endblock %}
+</div>
+
+{% include '_outdated_browser.html' %}
+
+{{- g.get('injected_js', []) | join('\n') | safe -}}
+
