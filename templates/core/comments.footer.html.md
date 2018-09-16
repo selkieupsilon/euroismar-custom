@@ -4,3 +4,4 @@ Replaced footer.
 Removed Indico logo.
 Removed "Help" link for Indico.
 Moved "Powered by Indico" to list of links.
+Added JS for responsive menu toggle.

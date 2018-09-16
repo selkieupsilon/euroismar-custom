@@ -34,6 +34,17 @@
     {% endblock %}
 </div>
 
+<script>
+function resMenuToggle() {
+    var resm = document.getElementById("outer");
+    if (resm.className === "resmenu") {
+        resm.className += " expandmenu";
+    } else {
+        resm.className = "resmenu";
+    }
+}
+</script>
+
 {% include '_outdated_browser.html' %}
 
 {{- g.get('injected_js', []) | join('\n') | safe -}}
