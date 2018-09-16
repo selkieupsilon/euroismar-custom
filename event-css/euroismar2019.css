@@ -1,5 +1,14 @@
 /*
  Indico stylesheet for EUROISMAR 2019
+*/
+/* icons */
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css");
+/* typefaces */
+@import url('https://fonts.googleapis.com/css?family=Didact+Gothic|Fira+Sans');
+
+/* ########################### COLORS (regrouped for consistency) ########################### */
+
+/*
  Palette:
 * background header image: #f1edfc
 * FMP green: #6bc128
@@ -10,10 +19,9 @@ adb6ad light green
 66766b dark green
 473e43 dark plum
 aca38e light beige
-#e0e0e0 very light beige (further option)
 #317d85 dark aqua (further option)
 #3aa09b light aqua (further option)
-* 
+#e0e0e0 very light beige (further option)
 * 
 palette containing fmp green
 435342 dark green
@@ -23,11 +31,7 @@ f1edfc background header image
 6bc128 fmp green
 * 
 */
-/* import icons */
-@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css");
-@import url('https://fonts.googleapis.com/css?family=Didact+Gothic|Fira+Sans');
 
-/* ----------- COLORS (regrouped for consistency) ----------- */
 .confTitleBox, .conference-title-link {
     color: white;
 }
@@ -53,6 +57,7 @@ a:hover, .fake-link:hover, .ui-widget-content a:hover {
 #outer li a:hover, #outer li a:not(.no-link):hover {    
     color: #f1edfc;
     background: #6bc128;
+    transition: color 0.2s;
 }
 
 .menuConfTitle a { /*items in the menu*/
@@ -72,7 +77,7 @@ a.resmenuIcon {
     font-size: 32pt;
 }
 
-/*    Support box colours  */
+/*    Support box colours    */
 
 .support_box {
     background: #ffffff;
@@ -84,14 +89,20 @@ a.resmenuIcon {
     background: #473e43;
 }
 
-/*   Content colours   */
+/*    Announcement colours    */
+
+.simpleTextAnnouncement {
+    color: #473e43;
+}
+
+/*    Content colours   */
 
 .conference-page header h2 {
     color: #806563;
 }
 
-/* Abstract submission colours */
-/* ----------- Styles for abstract submissions ----------- */
+/*    Abstract submission colours   */
+
 ul.steps li.completed .horizontal-line, ul.steps li.completed .circle::before {
     background-color: #317d85;
     border-color: #317d85;
@@ -114,7 +125,7 @@ ul.steps li.completed .text {
 .i-button.highlight:not(.label):not(.borderless):not(.text-color), .i-selection input[type="checkbox"]:checked + label:not(.label):not(.borderless):not(.text-color), .i-selection input[type="radio"]:checked + label:not(.label):not(.borderless):not(.text-color), .categorynav .category-list .item .button-wrapper .highlight:not(.label):not(.borderless):not(.text-color).action-button, .categorynav .category-list .item .button-wrapper :not(.label):not(.borderless):not(.text-color).action-button, .highlight:not(.label):not(.borderless):not(.text-color).action-button, :not(.label):not(.borderless):not(.text-color).action-button {
     border-color: #317d85;
     background: #3aa09b;
-    color: #f1edfc;
+    color: #ffffff;
 }
 
 .i-button.highlight:not(.label):not(.borderless):not(.text-color):hover, .i-selection input[type="checkbox"]:checked + label:not(.label):not(.borderless):not(.text-color):hover, .i-selection input[type="radio"]:checked + label:not(.label):not(.borderless):not(.text-color):hover, .categorynav .category-list .item .button-wrapper .highlight:not(.label):not(.borderless):not(.text-color):hover.action-button, .categorynav .category-list .item .button-wrapper :not(.label):not(.borderless):not(.text-color):hover.action-button, .highlight:not(.label):not(.borderless):not(.text-color):hover.action-button, :not(.label):not(.borderless):not(.text-color):hover.action-button {
@@ -122,12 +133,8 @@ ul.steps li.completed .text {
     background: #6bc128;
 }
 
-/* ----------- Responsive styles ----------- */
-@-ms-viewport{
-  width: device-width;
-}
+/* ########################### TYPEFACES (regrouped for consistency) ########################### */
 
-/* ----------- TYPEFACES ----------- */
 .conference-page, .conference-page .description, .conference-page .infogrid {
   font-family: "Didact Gothic", "Roboto", sans-serif;
   font-size: 1.1em;
@@ -145,7 +152,7 @@ ul.steps li.completed .text {
   font-family: "Didact Gothic", "Roboto", sans-serif;
 }
 
-#outer li a {
+#outer li a, .simpleTextAnnouncement {
   font-family: "Fira Sans", "Verdana", sans-serif;
   font-size: 1.4em;
 }
@@ -153,6 +160,9 @@ ul.steps li.completed .text {
 .footer {
   font-family: "Fira Sans", "Roboto", sans-serif;
 }
+
+
+/* ######################################### STYLES ######################################### */
 
 /* ----------- Styles for the conference header ----------- */
 
@@ -195,7 +205,7 @@ ul.steps li.completed .text {
     on the left of the conference title.
 */
 .confLogoBox {
-    padding-right: 0px;
+    padding-right: 0px;  /* using logo for a banner */
 }
 
 .confLogo, .responsive {
@@ -240,6 +250,7 @@ span[itemprop="title"] {
     font-size: 11pt;
 }
 
+
 /*
     Styles for the date and place information.
 */
@@ -256,23 +267,17 @@ span[itemprop="title"] {
 .simpleTextAnnouncement {
     background: #F5FAFF url(../../images/conf/sprites_blue.png) repeat-x scroll 0 -400px;
     border-top: 1px solid #c2d6e7;
-    font-family: Verdana;
     font-weight: bold;
     font-size: 10pt;
     text-align: center;
-    color: #0f283d;
     padding: 8px 0;
 }
-
 
 /* ----------- Styles for the menu ----------- */
 
 li.resmenuItem {  /* normally hide icon */
    display: none;
 }
-
-
-/* Styles for all menu Items */
 
 /*
     Wrapper around the menu
@@ -285,11 +290,6 @@ li.resmenuItem {  /* normally hide icon */
 /*
     Styles for the menu box
 */
-#outer {
-/*
-    border: 1px solid;
-*/
-}
 
 /*
     A non selected menu item
@@ -317,7 +317,6 @@ li ul.inner li a {
     padding: 3px 12px 3px 30px;
     background: transparent url(../../images/conf/left_menu_bullet.png) scroll no-repeat 15px center;
 }
-
 
 /*
     Support box
@@ -370,9 +369,16 @@ li ul.inner li a {
     max-width: 100%;
 }
 
-
+/* ----------- Styles for abstract submission page ----------- */
+.col2 {
+    width: 97%;
+}
 
 /* ----------- Responsive styles at end ----------- */
+
+@-ms-viewport{
+    width: device-width;
+}
 
 @media screen and (max-width: 600px) {
 
