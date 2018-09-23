@@ -64,7 +64,7 @@ a:hover, .fake-link:hover, .ui-widget-content a:hover {
     color: #473e43;
 }
 
-.menuConfTitle.selected > a, .menuConfMiddleCell.selected > a, .menuConfSelected, .menuConfMiddleCellSelected {
+.menuConfTitle.selected > a, .menuConfMiddleCell.selected > a, .menuConfSelected, .menuConfMiddleCellSelected, .menuConfTitle.selected > .inner > li a {
     color: #f1edfc;
     background: #473e43;
     border: 0px;
@@ -283,8 +283,7 @@ li.resmenuItem {  /* normally hide icon */
     Wrapper around the menu
 */
 .conf_leftMenu {
-    float:left;
-    width:200px;
+    width:216px;
 }
 
 /*
