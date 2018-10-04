@@ -168,10 +168,9 @@ ul.steps li.completed .text {
   font-size: 1.4em;
 }
 
-.footer {
+.footer, .support_box > h3 {
   font-family: "Fira Sans Condensed", "Roboto", sans-serif;
 }
-
 
 /* ######################################### STYLES ######################################### */
 
