@@ -28,7 +28,7 @@
                             <span class="conference-title-link" style="{{ conf_layout_params.text_color_css }}">
                                 {% if event.has_logo %}
                                     <div class="confLogoBox">
-                                       <img src="{{ event.logo_url }}" alt="{{ event.title }}" border="0" class="confLogo">
+                                       <img src="{{ event.logo_url }}" alt="{{ event.title }} ({{ _format_event_date(event) }})" border="0" class="confLogo">
                                     </div>
                                 {% endif %}
                                 <span itemprop="title">{{ event.title }}</span>
