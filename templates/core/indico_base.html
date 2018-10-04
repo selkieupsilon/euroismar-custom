@@ -14,7 +14,7 @@
     <meta name="google-site-verification" content="-XwI7z4ALOI6Bpo6gp5Hf8hmg9YDRqggBCWxlaZkJ_g" />
     <link rel="shortcut icon" type="image/x-icon" href="https://conference.euroismar2019.org/static/custom/logo_square_48x48.ico">
 
-    <meta property="og:site_name" content="{{ site_name }}">
+    <meta property="og:site_name" content="{%- if page_title %}{{ page_title }}{% endif %}">
     {% if social.facebook_app_id -%}
         <meta property="fb:app_id" content="{{ social.facebook_app_id }}">
     {% endif %}
