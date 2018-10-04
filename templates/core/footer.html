@@ -45,6 +45,10 @@ function resMenuToggle() {
 }
 </script>
 
+<script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAqvko22mv6-bJxKvbJQWwcodAGqevUi90&callback=initMap">
+</script>
+
 {% include '_outdated_browser.html' %}
 
 {{- g.get('injected_js', []) | join('\n') | safe -}}
