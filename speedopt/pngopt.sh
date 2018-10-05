@@ -1,11 +1,12 @@
 #!/bin/bash
+# make sure pngquant is installed before running
 
 imgdir=/opt/indico/.venv/lib/python2.7/site-packages/indico/htdocs/images
 
 if [[ -d ${imgdir}-bak ]]; then
  echo "Backup exists"
 else
- rsync -avn ${imgdir} ${imgdir}-bak
+ rsync -av ${imgdir} ${imgdir}-bak
 fi
 
 echo "Before pngquant"
