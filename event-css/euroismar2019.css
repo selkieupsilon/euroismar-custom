@@ -364,6 +364,11 @@ li ul.inner li a {
   margin-top: 0px;
 }
 
+.icon-user-chairperson::before  {
+  content: "H";
+}
+
+
 /* ----------- Styles for the society logos ----------- */
 .logotable {
     display: table;
