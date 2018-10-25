@@ -96,6 +96,16 @@ a.resmenuIcon {
     color: #473e43;
 }
 
+.brochure-button > a {
+  color:#f1edfc;
+  background-color: #473e43;
+}
+
+.brochure-button > a:hover {
+  background: #6bc128;
+  transition: color 0.5s;
+}
+
 /*    Abstract submission colours   */
 
 ul.steps li.completed .horizontal-line, ul.steps li.completed .circle::before {
@@ -286,7 +296,9 @@ span[itemprop="title"] {
 /* ----------- Styles for the menu ----------- */
 
 li.resmenuItem {  /* normally hide icon */
-   display: none;
+   display: none;.brochure-button > a {
+  background-color: black;
+}
 }
 
 /*
@@ -332,7 +344,9 @@ li ul.inner li a {
 */
 
 .support_box {
-    border-width: 1px;
+    border-width: 1px;.brochure-button > a {
+  background-color: black;
+}
 }
 
 /* ----------- Styles for the main content under header ----------- */
@@ -358,16 +372,21 @@ li ul.inner li a {
     margin-left: 250px;  /* place content right of menu */
 }
 
+.icon-user-chairperson::before  {
+  content: "H";
+}
+
     /* settings requested by HO*/
 
 .conference-page .description, .description > p {
   margin-top: 0px;
 }
 
-.icon-user-chairperson::before  {
-  content: "H";
+.brochure-button {
+  padding: 30px;
+  border-radius: 30px;
+  text-align: center;
 }
-
 
 /* ----------- Styles for the society logos ----------- */
 .logotable {
