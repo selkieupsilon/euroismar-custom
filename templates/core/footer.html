@@ -28,11 +28,6 @@
             </ul>
             <div class="footer-extra">
                 {% block footer_extra %}
-                {% endblock %}
-            </div>
-        </div>
-    {% endblock %}
-</div>
 
 <script>
 function resMenuToggle() {
@@ -45,9 +40,24 @@ function resMenuToggle() {
 }
 </script>
 
+<script> // add event to track brochure downloads
+if ($(".brochure-button")[0]){
+    ($(".brochure-button")[1]).addEventListener("click", function(){
+        ga("send", "event", "PDFdownloads", "Click", "Sponsorship brochure");
+    });
+}	
+</script>
+
 <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAqvko22mv6-bJxKvbJQWwcodAGqevUi90&callback=initMap">
 </script>
+
+                {% endblock %}
+            </div>
+        </div>
+    {% endblock %}
+</div>
+
 
 {% include '_outdated_browser.html' %}
 
