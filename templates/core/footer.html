@@ -28,6 +28,11 @@
             </ul>
             <div class="footer-extra">
                 {% block footer_extra %}
+                {% endblock %}
+            </div>
+        </div>
+    {% endblock %}
+</div>
 
 <script>
 function resMenuToggle() {
@@ -51,13 +56,6 @@ if ($(".brochure-button")[0]){
 <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAqvko22mv6-bJxKvbJQWwcodAGqevUi90&callback=initMap">
 </script>
-
-                {% endblock %}
-            </div>
-        </div>
-    {% endblock %}
-</div>
-
 
 {% include '_outdated_browser.html' %}
 
