@@ -96,6 +96,10 @@ a.resmenuIcon {
     color: #473e43;
 }
 
+div.page-header-dark {
+    background: #f1edfc;
+}
+
 .brochure-button > a {
   color:#f1edfc;
   background-color: #473e43;
@@ -187,7 +191,16 @@ ul.steps li.completed .text {
 /* ----------- Styles for the conference header ----------- */
 
 .header {
-    display: none;
+    position: absolute;
+}
+
+.event-page-header .main-action-bar {
+    height: 30px;
+    min-height: 30px;
+}
+
+div.session-bar {
+    margin: 0px;
 }
 
 /*
@@ -197,6 +210,10 @@ ul.steps li.completed .text {
     width: 100%;
     border: none;
     margin: auto;
+}
+
+#tz-selector-link {
+    display: none;
 }
 
 /*
@@ -243,7 +260,7 @@ ul.steps li.completed .text {
 }
 
 span[itemprop="title"] {
-    display:none;
+    display: none;
 }
 /*
     Wrapper around the bottom part of the conference header
