@@ -190,7 +190,7 @@ ul.steps li.completed .text {
 
 /* ----------- Styles for the conference header ----------- */
 
-.header {
+body > div.header {
     position: absolute;
 }
 
