@@ -100,12 +100,12 @@ div.page-header-dark {
     background: #f1edfc;
 }
 
-.brochure-button > a {
+.brochure-button,.register-button > a {
   color:#f1edfc;
   background-color: #473e43;
 }
 
-.brochure-button > a:hover {
+.brochure-button,.register-button > a:hover {
   background: #6bc128;
   transition: color 0.5s;
 }
@@ -148,9 +148,15 @@ ul.steps li.completed .text {
     color: inherit;
 }
 
-th {background: darkgray;text-align:left;}
-tr:nth-child(odd) {background: #CCC}
-tr:nth-child(even) {background: #FFF}
+/*    Table colours             */
+
+.pagecontent th {
+    background: darkgray;
+    text-align:left;
+}
+.pagecontent tr:nth-child(odd) {
+    background: #CCC
+}
 
 /* ########################### TYPEFACES (regrouped for consistency) ########################### */
 
@@ -325,9 +331,7 @@ span[itemprop="title"] {
 /* ----------- Styles for the menu ----------- */
 
 li.resmenuItem {  /* normally hide icon */
-   display: none;.brochure-button > a {
-  background-color: black;
-}
+   display: none;
 }
 
 /*
@@ -373,9 +377,7 @@ li ul.inner li a {
 */
 
 .support_box {
-    border-width: 1px;.brochure-button > a {
-  background-color: black;
-}
+    border-width: 1px;
 }
 
 /* ----------- Styles for the main content under header ----------- */
@@ -411,7 +413,7 @@ li ul.inner li a {
   margin-top: 0px;
 }
 
-.brochure-button {
+.brochure-button,.register-button {
   padding: 30px;
   border-radius: 30px;
   text-align: center;
