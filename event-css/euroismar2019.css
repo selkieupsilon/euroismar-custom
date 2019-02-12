@@ -148,6 +148,10 @@ ul.steps li.completed .text {
     color: inherit;
 }
 
+th {background: darkgray;text-align:left;}
+tr:nth-child(odd) {background: #CCC}
+tr:nth-child(even) {background: #FFF}
+
 /* ########################### TYPEFACES (regrouped for consistency) ########################### */
 
 .conference-page, .conference-page .description, .conference-page .infogrid, 
@@ -431,6 +435,10 @@ li ul.inner li a {
 /* ----------- Styles for abstract submission page ----------- */
 .col2 {
     width: 97%;
+}
+
+#wmd-image-button-f_description, #wmd-heading-button-f_description, #wmd-hr-button-f_description {
+    display: none;
 }
 
 /* ----------- Responsive styles at end ----------- */
