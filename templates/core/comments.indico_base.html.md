@@ -3,3 +3,4 @@ Customizable: core/indico_base.html (original: /opt/indico/.venv/local/lib/pytho
 Removed Indico in the title (shows up in title on Google searches).
 Removed Indico in the OpenGraph site name.
 Added viewport meta tag.
+Changed site icon.
