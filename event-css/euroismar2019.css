@@ -457,6 +457,10 @@ li ul.inner li a {
     display: none;
 }
 
+div#wmd-input-f_description-max-length-info {
+    z-index: 1000;
+}
+
 /* ----------- Styles for abstract submission authors box ----------- */
 a.i-link.icon-settings, div#coauthor-list-title-person_links {
     display:none;
