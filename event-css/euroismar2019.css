@@ -461,6 +461,15 @@ li ul.inner li a {
     display: none;
 }
 
+/* ----------- Styles for abstract submission authors' box ----------- */
+a.i-link.icon-settings, div#coauthor-list-title-person_links {
+    display:none;
+}
+
+div#no-coauthor-placeholder-person_links {
+    display:none!important;
+}
+
 /* ----------- Responsive styles at end ----------- */
 
 @-ms-viewport{
