@@ -147,10 +147,6 @@ ul.steps li.completed .text {
     opacity: .8;
 }
 
-.i-label.small.speaker:not(.selected)::after  {
-    content: "? (Select at least one)";
-}
-
 .person-link-list .person-row .person-roles .i-label:not(.selected) {
     color:#317d85!important;
 }
@@ -461,13 +457,25 @@ li ul.inner li a {
     display: none;
 }
 
-/* ----------- Styles for abstract submission authors' box ----------- */
+/* ----------- Styles for abstract submission authors box ----------- */
 a.i-link.icon-settings, div#coauthor-list-title-person_links {
     display:none;
 }
 
 div#no-coauthor-placeholder-person_links {
     display:none!important;
+}
+
+.i-label.small.speaker:not(.selected)::after  {
+    content: "/Presenter? (Select at least one)";
+}
+
+.i-label.speaker.selected::after {
+    content: "/Presenter";
+}
+
+.person-link-list, #title {
+    width: 100%;
 }
 
 /* ----------- Responsive styles at end ----------- */
