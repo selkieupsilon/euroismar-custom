@@ -100,12 +100,12 @@ div.page-header-dark {
     background: #f1edfc;
 }
 
-.brochure-button,.register-button > a {
+.brochure-button > a,.register-button > a {
   color:#f1edfc;
   background-color: #473e43;
 }
 
-.brochure-button,.register-button > a:hover {
+.brochure-button > a:hover,.register-button > a:hover {
   background: #6bc128;
   transition: color 0.5s;
 }
