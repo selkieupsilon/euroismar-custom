@@ -56,12 +56,7 @@ if ($(".brochure-button")[0]){
 <script> // add event to track click through to registration page
 if ($(".register-button")[0]){
     ($(".register-button")[1]).addEventListener("click", function(){
-        ga("send", "event", {
-        eventCategory: 'Outbound Link',
-        eventAction: 'click',
-        eventLabel: event.target.href,
-        transport: 'beacon'
-        });   
+        ga("send", "event", "Outbound Link", "click","Register link to GDCh");
     });
 }	
 </script>
