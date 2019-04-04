@@ -529,5 +529,8 @@ div#no-coauthor-placeholder-person_links {
   #confSectionsBox.clearfix {
     margin-top: 0pt;
   }
+  .support_box {
+    display: none;
+  }
 
 } /*  end of responsive styles */ 
