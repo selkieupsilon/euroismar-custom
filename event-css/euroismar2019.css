@@ -78,6 +78,10 @@ a.resmenuIcon {
     margin-bottom: 15px;
 }
 
+.spacer + li > a {
+    color : white; 
+}
+
 /*    Support box colours    */
 
 .support_box {
@@ -102,11 +106,11 @@ div.page-header-dark {
 
 .brochure-button > a,.register-button > a {
   color:#f1edfc;
-  background-color: #473e43;
+  background-color: #6bc128;
 }
 
 .brochure-button > a:hover,.register-button > a:hover {
-  background: #6bc128;
+  background: #473e43;
   transition: color 0.5s;
 }
 
