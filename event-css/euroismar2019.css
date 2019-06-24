@@ -470,6 +470,14 @@ div#no-coauthor-placeholder-person_links {
     width: 100%;
 }
 
+/* ----------- Styles for timetable ----------- */
+
+div.timetableBlockPresenters {
+    display:block !important;
+    text-align: right;
+}
+
+
 /* ----------- Responsive styles at end ----------- */
 
 @-ms-viewport{
