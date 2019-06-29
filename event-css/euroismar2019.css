@@ -477,6 +477,13 @@ div.timetableBlockPresenters {
     text-align: right;
 }
 
+/* ----------- Styles for track page ----------- */
+
+ul.tracks li ul li {
+    margin-top: 0em;
+    margin-bottom: 0.2em;
+}
+
 
 /* ----------- Responsive styles at end ----------- */
 
