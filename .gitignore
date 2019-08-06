@@ -1,1 +1,4 @@
 static/assets
+config.ini
+*.json
+*.sublime*
