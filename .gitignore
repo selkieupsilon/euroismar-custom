@@ -2,3 +2,4 @@ static/assets
 config.ini
 *.json
 *.sublime*
+rsync.sh
