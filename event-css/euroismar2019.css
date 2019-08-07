@@ -222,6 +222,8 @@ ul.steps li.completed .text {
   font-family: "Fira Sans Condensed", "Roboto", sans-serif;
 }
 
+
+
 /* ######################################### STYLES ######################################### */
 
 /* ----------- Styles for the conference header ----------- */
@@ -237,6 +239,10 @@ body > div.header {
 
 div.session-bar {
     margin: 0px;
+}
+
+.i-button.text-color.subtle:not(:hover):not(:active) {
+    display: none;
 }
 
 /*
@@ -498,6 +504,13 @@ ul.tracks li ul {
 .i-form .form-group .form-field input[type="text"], .i-form .form-group .form-field textarea {
     width: 100%;
 }
+
+/* ----------- Styles for footers ----------- */
+
+.footer-logo {
+    display: none;
+}
+
 
 /* ----------- Responsive styles at end ----------- */
 
