@@ -27,5 +27,5 @@ Also add this line to give more information on the path to templates for Jinja i
 ```
   CUSTOMIZATION_DEBUG = 'True'
 ```
-
+The "debug" info is stored in `/opt/indico/log/indico.log`
 
