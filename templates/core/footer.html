@@ -1,0 +1,68 @@
+<div class="footer {{ 'dark' if dark }}">
+    {% block footer -%}
+        {%- set indico -%}
+            <a href="https://getindico.io">Indico</a>
+        {%- endset -%}
+        <div class="flexrow f-j-space-between">
+            <div class="flexrow f-a-center f-self-stretch">
+                <div class="f-self-no-shrink" style="margin-left: 1em;">
+                </div>
+            </div>
+            <ul class="footer-links">
+                <li>
+                    <a href="{{ indico_config.HELP_URL }}">
+                        {% trans %}Help{% endtrans %}
+                    </a>
+                </li>
+                {% if indico_config.PUBLIC_SUPPORT_EMAIL %}
+                    <li>
+                        <a href="{{ url_for('core.contact') }}">
+                            {% trans %}Contact{% endtrans %}
+                        </a>
+                    </li>
+                {% endif %}
+                {% for item in template_hook('page-footer', as_list=true) %}
+                    <li>
+                        {{ item }}
+                    </li>
+                {% endfor %}
+                <li>{% trans %}Powered by {{ indico }}{% endtrans %}</li>
+            </ul>
+            <div class="footer-extra f-self-stretch">
+                {% block footer_extra %}
+                {% endblock %}
+            </div>
+        </div>
+    {% endblock %}
+</div>
+
+
+<script>
+// responsive menu
+function resMenuToggle() {
+    var resm = document.getElementById("outer");
+    if (resm.className === "resmenu") {
+        resm.className += " expandmenu";
+    } else {
+        resm.className = "resmenu";
+    }
+}
+
+// add event to track brochure downloads
+if ($(".brochure-button")[0]){
+    ($(".brochure-button")[1]).addEventListener("click", function(){
+        ga("send", "event", "PDFdownloads", "Click", "Sponsorship brochure");
+    });
+}   
+
+// add event to track click through to registration page
+if ($(".register-button")[0]){
+    ($(".register-button")[1]).addEventListener("click", function(){
+        ga("send", "event", "Outbound Link", "click","Register link to GDCh");
+    });
+}   
+</script>
+
+{% include '_outdated_browser.html' %}
+
+{{- g.get('injected_js', []) | join('\n') | safe -}}
