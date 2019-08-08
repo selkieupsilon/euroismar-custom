@@ -3,13 +3,12 @@
 Customization directory for the EUROISMAR 2019 website on Indico 
 https://www.euroismar2019.org/
 
-Updated for Indico 2.2.
-https://github.com/indico/indico
-https://getindico.io/
+Updated for [Indico 2.2](https://getindico.io/). Github repo https://github.com/indico/indico
+
 
 ## Features
-* Implemented responsive customizations to make it nicer for mobiles.
-* Removed buttons from top navigation bar on event display pages.
+* Implemented responsive customizations to make it nicer for mobiles. (CSS + footer template)
+* Removed buttons from top navigation bar on event display pages. (CSS)
 * (not Indico) speedopt contains server settings for speed optimizations.
 
 ## Indico 2.2 specific changes
