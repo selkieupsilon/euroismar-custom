@@ -1,3 +1,4 @@
+
 # euroismar-custom
 Customization directory for the EUROISMAR 2019 website on Indico 
 https://www.euroismar2019.org/
@@ -12,7 +13,7 @@ Updated for Indico 2.2.
 ## Indico 2.2 specific changes
 * no more scss, so scss -> css
 * /static/ renamed to /files/
-* url path for files to use in templates "{{ url_for('assets.custom', filename='...') }}"
+* url path for files to use in templates `"{{ url_for('assets.custom', filename='...') }}"`
  
 ## How to enable customizations
 See https://docs.getindico.io/en/stable/config/settings/#customization
