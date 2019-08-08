@@ -29,11 +29,15 @@ Updated for [Indico 2.2](https://getindico.io/). Github repo https://github.com/
   * has to be in footer since DOM needs to be in place for events to be attached. Normal JS include adds into header.
   * (suspected) cannot use extend footer.html due to escaping by Jinja leads to dropping of any <script></script> tags added to footer.html
 * hardcoded Indico logos to return to EUROISMAR homepage (header.html template extension)
+* Removed Indico in the title since it shows up in title on Google searches (indico_base.html)
+* Changed site favicon to EUROISMAR logo (indico_base.html)
+* Added viewport meta tag (indico_base.html) - this can in principle now be changed by an extension of the template in {% block extra_meta_tags %}
 
 ## Indico 2.2 specific changes
 * no more scss, so scss -> css
 * /static/ renamed to /files/
 * url path for files to use in templates `"{{ url_for('assets.custom', filename='...') }}"`
+* quite a lot of changes in `indico_base.html`
  
 ## How to enable customizations
 See https://docs.getindico.io/en/stable/config/settings/#customization
