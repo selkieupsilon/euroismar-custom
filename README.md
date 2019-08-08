@@ -22,6 +22,7 @@ Updated for [Indico 2.2](https://getindico.io/). Github repo https://github.com/
 * sitewide CSS - changed background colour of header to EUROISMAR green (CSS)
 * added extra instructions for abstract submitters for Markdown/LaTeX superscripts and subscripts (submission.html template)
 * branded login page to ensure that visitors know they are still on EUROISMAR site (login_page.html template)
+* hardcoded error page to return to EUROISMAR homepage instead of Indico category view (error.html)
 
 ## Indico 2.2 specific changes
 * no more scss, so scss -> css
