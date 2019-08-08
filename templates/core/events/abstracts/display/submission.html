@@ -7,6 +7,9 @@
         {% trans -%}
             Please don't forget to read the {{ link }}submission instructions{{ endlink }} before submitting an abstract.
         {%- endtrans %}
+            The text box does not preserve formatting from another software (Word, etc).<br />
+            In particular, <strong>superscripts</strong> and <strong>subscripts</strong> can be added by enclosing the text with suitable tags, namely &lt;sup&gt; textup &lt;/sup&gt; and &lt;sub&gt; textdown &lt;/sub&gt;.<br />
+            You can also use single-line math mode LaTeX expressions by enclosing them in dollar signs $ ... $
     {% endcall %}
 </div>
 {{ simple_form(form, form_header_kwargs={'action': request.relative_url}, submit=_("Submit"), back=_("Cancel"),
