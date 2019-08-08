@@ -9,8 +9,8 @@ Updated for [Indico 2.2](https://getindico.io/). Github repo https://github.com/
 
 
 ## Features
-* Implemented responsive customizations to make it nicer for mobiles. (CSS + templates)
-* Removed buttons from top navigation bar on event display pages. (CSS)
+* Implemented responsive customizations to make it nicer for mobiles. (event CSS + templates)
+* Removed buttons from top navigation bar on event display pages. (event CSS)
 * Record server configs (`speedopt`) for speed optimizations from the [HTML5 boilerplate project](https://github.com/h5bp/server-configs-nginx/).
 
 ### Mobile-friendly navigation menu
@@ -21,7 +21,7 @@ Updated for [Indico 2.2](https://getindico.io/). Github repo https://github.com/
   * also works as a JS include in header, but have other JS that has to be added end of page, so put it all there.
 
 ## EUROISMAR-specific branding and customizations
-* sitewide CSS - changed background colour of header to EUROISMAR green (CSS)
+* sitewide CSS - changed background colour of header to EUROISMAR green (CSS in customization directory)
 * added extra instructions for abstract submitters for Markdown/LaTeX superscripts and subscripts (submission.html template)
 * branded login page to ensure that visitors know they are still on EUROISMAR site (login_page.html template)
 * hardcoded error page to return to EUROISMAR homepage instead of Indico category view (error.html)
