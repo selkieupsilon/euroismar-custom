@@ -27,6 +27,7 @@ Updated for [Indico 2.2](https://getindico.io/). Github repo https://github.com/
 * hardcoded error page to return to EUROISMAR homepage instead of Indico category view (error.html)
 * added event to track click through of sponsorship brochure and registration via Google Analytics (footer.html)
   * has to be in footer since DOM needs to be in place for events to be attached. Normal JS include adds into header.
+  * (suspected) cannot use extend footer.html due to escaping by Jinja leads to dropping of any <script></script> tags added to footer.html
 
 ## Indico 2.2 specific changes
 * no more scss, so scss -> css
