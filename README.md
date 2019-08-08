@@ -11,6 +11,11 @@ Updated for [Indico 2.2](https://getindico.io/). Github repo https://github.com/
 * Removed buttons from top navigation bar on event display pages. (CSS)
 * (not Indico) speedopt contains server settings for speed optimizations.
 
+## EUROISMAR-specific branding and customizations
+* sitewide CSS - changed background colour of header to EUROISMAR green (CSS)
+* added extra instructions for abstract submitters for Markdown/LaTeX superscripts and subscripts (sumission.html template)
+* branded login page to ensure that visitors know they are still on EUROISMAR site (login_page.html template)
+
 ## Indico 2.2 specific changes
 * no more scss, so scss -> css
 * /static/ renamed to /files/
