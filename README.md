@@ -4,6 +4,8 @@ Customization directory for the EUROISMAR 2019 website on Indico
 https://www.euroismar2019.org/
 
 Updated for Indico 2.2.
+https://github.com/indico/indico
+https://getindico.io/
 
 ## Features
 * Implemented responsive customizations to make it nicer for mobiles.
