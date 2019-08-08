@@ -241,7 +241,7 @@ div.session-bar {
     margin: 0px;
 }
 
-.i-button.text-color.subtle:not(:hover):not(:active) {
+.i-button.text-color.subtle:not(:hover):not(:active), .i-button.text-color.subtle:not(:hover):not(:active), div.session-bar .i-button.protection-public:not(.label):not(.borderless):not(.text-color) {
     display: none;
 }
 
