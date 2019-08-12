@@ -1,0 +1,223 @@
+{% from 'attachments/_display.html' import render_attachments_folders %}
+{% from 'events/display/common/_manage_button.html' import render_manage_button %}
+{% from 'events/display/indico/_common.html' import render_users %}
+
+{% macro render_break(break_, timezone) %}
+    <tr>
+      <td valign="top" bgcolor="#FFdcdc">
+          {{ break_.timetable_entry.start_dt | format_time(timezone=timezone) }}
+      </td>
+      <td valign="top" bgcolor="#FFcccc" align="center" colspan="1">
+        ---&nbsp;{{ break_.title }}&nbsp;---
+      </td>
+    </tr>
+{% endmacro %}
+
+{% macro render_session_block(block, timezone) %}
+    {% set entries = block.timetable_entry.children %}
+    {% for entry in entries|sort(attribute='object.title')|sort(attribute='start_dt') %}
+        {% if entry.type.name == 'CONTRIBUTION' and entry.object.can_access(session.user) %}
+            {{ render_contribution(entry.contribution, timezone, loop.index) }}
+        {% elif entry.type.name == 'BREAK' %}
+            {{ render_break(entry.break_, timezone) }}
+        {% endif %}
+    {% endfor %}
+{% endmacro %}
+
+{% macro render_contribution(contrib, timezone, index) %}
+    <tr bgcolor={{ "silver" if index % 2 != 0 else "#D2D2D2" }}>
+        <td bgcolor=${"#D0D0D0" if index % 2 != 0 else "#E2E2E2"}  valign="top" width="5%">
+            {{ contrib.start_dt | format_time(timezone=timezone) }}
+        </td>
+        <td valign="top">
+	    <a href="{{url_for('contributions.display_contribution', contrib) }}">
+            {{ contrib.title }}</a> <br>
+            {% set speakers = contrib.person_links|selectattr("is_speaker")|list %}
+            {% if speakers %}
+                {{ render_users(speakers, span_class="speakerList", separator=' ') }}
+	        <br>
+            {% endif %}
+
+            {% if not contrib.inherits_location %}
+                ({{ contrib.room_name }})
+            {% endif %}
+            <div style="float: right">
+                <div style="float: left">
+                    {{ render_attachments_folders(item=contrib) }}
+                </div>
+                <div style="float: right">
+                    {% if contrib.has_note %}
+                        <div class="toolbar right thin">
+                            <div class="group">
+                                <a href="{{ url_for('event_notes.view', contrib) }}" class="i-button">
+                                    {% trans %}Minutes{% endtrans %}
+                                </a>
+                            </div>
+                        </div>
+                    {% endif %}
+                  </div>
+              </div>
+        </td>
+    </tr>
+{% endmacro %}
+
+{% macro render_entry(entry, timezone, index) %}
+    {% if entry.type.name == 'CONTRIBUTION' -%}
+        {# This isn't run, it's all grouped in session blocks #}
+        {{ render_contribution(entry.object, timezone, index) }}
+    {% elif entry.type.name == 'SESSION_BLOCK' -%}
+        {{ render_session_block(entry.object, timezone) }}
+    {% elif entry.type.name == 'BREAK' -%}
+        {{ render_break(entry.object, timezone) }}
+    {% endif %}
+{% endmacro %}
+
+{% macro render_speakers(speakers) %}
+    {% for speaker in speakers %}
+	{{ speaker.display_full_name }}
+    {% endfor %}
+{% endmacro %}    
+
+{# What's going on in a given room at this time #}
+{% macro RoomAtTime(start, room, fcolors, bcolors, rows) %}
+    {% if room in start %}
+	{% if start[room] == "skip" %}
+	    {# rowspan, skip here #}
+	{% elif start[room].type.name == 'BREAK' %}
+	    {% set obj = start[room].object %}
+    	    <td bgcolor={{ bcolors[obj.id] }} style="color: #{{fcolors[obj.id]}}"
+		rowspan={{ rows[obj.id] }} valign="top">
+	    {{ obj.title }}</td>
+	{% else %}
+	    {% set obj = start[room].object %}
+	    <td bgcolor={{ bcolors[obj.id] }} style="color: #{{fcolors[obj.id]}}"
+		rowspan={{ rows[obj.id] }} valign="top">
+    	    <a href="{{url_for('contributions.display_contribution', obj) }}"
+		style="color:#{{fcolors[obj.id]}}">
+	    <b>{{ obj.title }}</b></a>
+       	    {% set speakers = obj.person_links|selectattr("is_speaker")|list %}
+      	    {% if speakers %}
+                <br> {{ render_speakers(speakers) }}
+       	    {% endif %}
+	    <span class="lpctt"><br>{{ room }}</span>
+            </td>
+	{% endif %}
+    {% else %}
+	<td></td>
+    {% endif %}
+{% endmacro %}
+
+{#
+ # Let's try to make a tracks header.
+ #}
+{%- macro render_track(session) -%}
+    <td bgcolor={{session.background_color}} style="color: {{session.text_color}}">
+	{{session.title}}
+    </td>
+{%- endmacro -%}
+
+{%- set seen = [] -%}
+
+<table border><tr>
+{%- for day, entries in days -%}
+    {%- for entry in entries -%}
+        {%- if entry.type.name == 'SESSION_BLOCK' -%}
+	    {%- set session = entry.object.session -%}
+	    {%- if session.title not in seen -%}
+		{{ seen.append(session.title) or "" }}
+		{{ render_track(session) }}
+	    {%- endif -%}
+	{%- endif -%}
+    {%- endfor -%}
+{%- endfor -%}
+</tr></table><p>
+
+{#
+ # Now go through again to render the schedule.
+ #}
+<table class="lpctt">
+{% for day, entries in days %}
+    {% set roomlist = [] %}
+    {% set starts = {} %}
+    {% set fstarts = { } %}  {# full start-time info #}
+    {% set bcolors = {} %}
+    {% set fcolors = {} %}
+    {# 
+     # Reorganize the data in a way that's useful to us.
+     #}
+    {% for entry in entries %}
+        {% if entry.type.name == 'SESSION_BLOCK' %}
+ 	    {% if entry.object.room_name not in roomlist %}
+		{{ roomlist.append(entry.object.room_name) or "" }}
+	    {% endif %}
+	    {% for subent in entry.object.timetable_entry.children %}
+		{% set key = subent.start_dt|format_datetime(format='HH:mm', timezone=timezone) %}
+		{{ bcolors.__setitem__(subent.object.id, entry.object.session.background_color) or "" }}
+		{{ fcolors.__setitem__(subent.object.id, entry.object.session.text_color) or "" }}
+		{% if key not in starts %}
+		    {% set rd = { subent.object.room_name: subent } %}
+		    {{ starts.__setitem__(key, rd) or "" }}
+		    {{ fstarts.__setitem__(key, subent.start_dt) or "" }}
+		{% else %}
+		    {{ starts[key].__setitem__(subent.object.room_name, subent) or "" }}
+		{% endif %}
+	    {% endfor %}
+        {% endif %}
+    {% endfor %}
+    {# 
+     # Now we have to plow through again to count rows 
+     #}
+    {% set rows = { } %}
+    {% set opens = [] %}
+    {% for start in starts|sort %}
+	{#
+	 # Look at any open sessions from the previous start time and figure
+	 # out if then extend past this start time; increment rows for those 
+ 	 # that do and remember that they are still open.
+	 #}
+	{% set stillopen = [] %}
+	{% for open in opens %}
+	    {% if open.end_dt > fstarts[start] %}
+		{{ rows.__setitem__(open.object.id, rows[open.object.id] + 1) or "" }}
+		{{ starts[start].__setitem__(open.object.room_name, "skip") or "" }}
+		{{ stillopen.append(open) or "" }}
+	    {% endif %}
+	{% endfor %}
+	{% for o in opens %}
+	    {% if o not in stillopen %}
+		{{ opens.remove(o) or "" }}
+	    {% endif %}
+	{% endfor %}
+	{#
+	 # Now look at all of the sessions that start at this time and add them
+	 # to the open list.
+	 #}
+	{% for room in starts[start] %}
+	    {% set entry = starts[start][room] %}
+	    {% if entry != "skip" %}
+	    	{{ rows.__setitem__(entry.object.id, 1) or "" }}
+	    	{{ opens.append(entry) or "" }}
+	    {% endif %}
+	{% endfor %}
+	{% set weird = opens %}  {# Otherwise opens gets reset!!! #}
+    {% endfor %}
+    {#
+     # After all that silliness we can go ahead and create our table.
+     #}
+    <tr class="lpcttday"><th></th><th colspan={{ roomlist|length }}>
+	<h4>{{day|format_date(format='medium', timezone=timezone)}}</h4></th></tr>
+    <tr class="lpctthdr"><th>Time</th>
+    {% for room in roomlist|sort %}
+        <th> {{ room }} </th>
+    {% endfor %}
+    </tr>
+    {% for start in starts|sort %}
+	<tr><th valign="top">{{ start }}</th>
+	{% for room in roomlist|sort %}
+	    {{ RoomAtTime(starts[start], room, fcolors, bcolors, rows) }}
+   	{% endfor %}
+	</tr>
+    {% endfor %}
+{% endfor %}
+</table>
+
