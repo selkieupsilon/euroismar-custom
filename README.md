@@ -33,6 +33,18 @@ Updated for [Indico 2.2](https://getindico.io/). Github repo https://github.com/
 * Changed site favicon to EUROISMAR logo (indico_base.html)
 * Added viewport meta tag (indico_base.html) - this can in principle now be changed by an extension of the template in {% block extra_meta_tags %}
 
+## Mobile-friendly timetable
+Based on example from [Linux Plumbers Conference](https://linuxplumbersconf.org/).
+
+* added templates 
+  * `templates/core/events/display/better.html` - same as `compact.html`
+  * `templates/core/events/timetable/display/better.html` - shared by LPC administrators
+* modified installed versions of two files to add "better" as a theme option:
+  * `/opt/indico/.venv/local/lib/python2.7/site-packages/indico/modules/events/themes.yaml`
+  * `/opt/indico/.venv/lib/python2.7/site-packages/indico/web/static/dist/manifest.json`
+
+This "feature" is definitely better achieved as a plugin but currently hardcoded.
+
 ## Indico 2.2 specific changes
 * no more scss, so scss -> css
 * /static/ renamed to /files/
