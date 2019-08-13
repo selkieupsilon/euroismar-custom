@@ -35,6 +35,7 @@ Updated for [Indico 2.2](https://getindico.io/). Github repo https://github.com/
 
 ## Mobile-friendly timetable
 Based on example from [Linux Plumbers Conference](https://linuxplumbersconf.org/).
+Seems to be a modification of the "compact" or "nicecompact" theme that is built into Indico. Original templates called `compact.html` [link](https://github.com/search?utf8=%E2%9C%93&q=repo%3Aindico%2Findico+filename%3Acompact.html&type=Code&ref=advsearch&l=&l=) to search in Indico project for files named "compact.html".
 
 * added templates 
   * `templates/core/events/display/better.html` - same as `compact.html`
