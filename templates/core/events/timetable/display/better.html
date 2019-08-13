@@ -1,4 +1,4 @@
-{% from 'attachments/_display.html' import render_attachments_folders %}
+{# {% from 'attachments/_display.html' import render_attachments_folders %} #}
 {% from 'events/display/common/_manage_button.html' import render_manage_button %}
 {% from 'events/display/indico/_common.html' import render_users %}
 
@@ -96,7 +96,7 @@
       	    {% if speakers %}
                 <br> {{ render_speakers(speakers) }}
        	    {% endif %}
-	    {# <span class="lpctt"><br>{{ room }}</span> #}
+	    <span class="lpctt"><br>{{ room }}</span> {# hide with CSS for normal screen, show for mobiles #}
             </td>
 	{% endif %}
     {% else %}
@@ -132,7 +132,7 @@
 {#
  # Now go through again to render the schedule.
  #}
-<table class="lpctt">
+<table class="better-lpctt">
 {% for day, entries in days %}
     {% set roomlist = ["Max Kade Auditorium", "Lecture Hall A", "Lecture Hall B", "Lecture Hall C", "Lecture Hall D"] %}  {# hard code room list in this order #}
     {% set starts = {} %}
@@ -201,16 +201,16 @@
     {#
      # After all that silliness we can go ahead and create our table.
      #}
-    <tr class="lpcttday"><th></th><th colspan={{ roomlist|length }}>
+    <tr class="better-lpcttday"><th></th><th colspan={{ roomlist|length }}>
 	<h4>{{day|format_date(format='medium', timezone=timezone)}}</h4></th></tr>
-    <tr class="lpctthdr"><th>Time</th>
-    {% for room in roomlist %}
-        <th> {{ room }} </th>
+    <tr class="better-lpctthdr"><th>Time</th>
+    {% for room in roomlist %} 
+        <th> {{ room }} </th> {# removed sort to preserve list order #}
     {% endfor %}
     </tr>
     {% for start in starts|sort %}
 	<tr><th valign="top">{{ start }}</th>
-	{% for room in roomlist %}
+	{% for room in roomlist %} {# removed sort to preserve list order #}
 	    {{ RoomAtTime(starts[start], room, fcolors, bcolors, rows) }}
    	{% endfor %}
 	</tr>

@@ -484,6 +484,70 @@ div.timetableBlockPresenters {
     text-align: right;
 }
 
+
+
+/* ----------- Styles for better timetable ----------- */
+/* --- based on Linux Plumbers Conference (LPC) ---*/
+table.better-lpctt {
+    border: black;
+    padding: 5px;
+    border-style: groove;
+    border-width: 3px;
+}
+
+table.better-lpctt tr:hover {
+    background-color: #ddd;
+}
+
+tr.better-lpcttday {
+    background-color: beige;
+}
+
+span.better-lpctt {
+    display: none;
+}
+
+@media only screen and (max-width: 48em) {
+  /* Force table to not be like tables anymore */
+  table.better-lpctt  {
+        display: table-row;
+  width: 95%;
+    }
+    table.better-lpctt thead {
+        display: none;
+    }
+    span.better-lpctt {
+  display: inline;
+    }
+    table.better-lpctt tbody, th, td, tr {
+    display: block;
+  }
+
+    tr.better-lpctthdr {
+  display: none;
+    }
+
+    table.better-lpctt td {
+      /* Behave  like a "row" */
+      border: none;
+      position: relative;
+      /* padding-left: 50%;*/
+  }
+
+  table.better-lpctt td:before {
+    /* Now like a table header */
+    position: absolute;
+    /* Top/left values mimic padding */
+    top: 6px;
+    left: 6px;
+    width: 45%;
+    padding-right: 10px;
+    white-space: nowrap;
+  }
+}
+
+
+
 /* ----------- Styles for track page ----------- */
 
 ul.tracks li ul li {
