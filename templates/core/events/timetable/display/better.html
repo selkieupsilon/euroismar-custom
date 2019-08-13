@@ -38,9 +38,6 @@
 	        <br>
             {% endif %}
 
-            {% if not contrib.inherits_location %}
-                ({{ contrib.room_name }})
-            {% endif %}
             <div style="float: right">
                 <div style="float: left">
                     {{ render_attachments_folders(item=contrib) }}
@@ -99,7 +96,7 @@
       	    {% if speakers %}
                 <br> {{ render_speakers(speakers) }}
        	    {% endif %}
-	    <span class="lpctt"><br>{{ room }}</span>
+	    {# <span class="lpctt"><br>{{ room }}</span> #}
             </td>
 	{% endif %}
     {% else %}
@@ -137,7 +134,7 @@
  #}
 <table class="lpctt">
 {% for day, entries in days %}
-    {% set roomlist = [] %}
+    {% set roomlist = ["Max Kade Auditorium", "Lecture Hall A", "Lecture Hall B", "Lecture Hall C", "Lecture Hall D"] %}  {# hard code room list in this order #}
     {% set starts = {} %}
     {% set fstarts = { } %}  {# full start-time info #}
     {% set bcolors = {} %}
@@ -207,13 +204,13 @@
     <tr class="lpcttday"><th></th><th colspan={{ roomlist|length }}>
 	<h4>{{day|format_date(format='medium', timezone=timezone)}}</h4></th></tr>
     <tr class="lpctthdr"><th>Time</th>
-    {% for room in roomlist|sort %}
+    {% for room in roomlist %}
         <th> {{ room }} </th>
     {% endfor %}
     </tr>
     {% for start in starts|sort %}
 	<tr><th valign="top">{{ start }}</th>
-	{% for room in roomlist|sort %}
+	{% for room in roomlist %}
 	    {{ RoomAtTime(starts[start], room, fcolors, bcolors, rows) }}
    	{% endfor %}
 	</tr>
