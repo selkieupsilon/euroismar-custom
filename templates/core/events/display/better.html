@@ -1,21 +1,4 @@
-{% extends 'layout/conference_page_base.html' %}
-
-{% from 'events/display/_event_header_message.html' import render_event_header_msg %}
-
-{%- macro _format_event_date(event) -%}
-    {% set start_dt = event.start_dt_display.astimezone(event.display_tzinfo) %}
-    {% set end_dt = event.end_dt_display.astimezone(event.display_tzinfo) %}
-    {% if start_dt.date() == end_dt.date() %}
-        {{ start_dt | format_date('long') }}
-    {% elif start_dt.year == end_dt.year and start_dt.month == end_dt.month %}
-        {{ start_dt.day }}-{{ end_dt.day }} {{ start_dt | format_date('MMMM yyyy') }}
-    {% else %}
-        {% trans start=start_dt|format_date('long'), end=end_dt|format_date('long') -%}
-            {{ start }} to {{ end }}
-        {%- endtrans %}
-    {% endif %}
-{%- endmacro -%}
-
+{% extends 'events/display/conference/base.html' %}
 
 {% block page %}
     <div class="conf clearfix">
@@ -49,7 +32,7 @@
             <div class="confBodyBox clearfix {{ 'event-locked' if event.is_locked }}">
                 <div class="mainContent">
                     <div class="col2">
-                        {{ super() }}
+                        {# removed super block here #}
                     </div>
                 </div>
             </div>

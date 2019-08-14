@@ -39,7 +39,7 @@ Originally appears to be a modification of the "compact" or "nicecompact" theme 
 Subsequently changed top of page and CSS to better match rest of EUROISMAR website. A number of colours were hardcoded to work around the `conf_layout_params not found` error.
 
 * added templates 
-  * `templates/core/events/display/better.html` - simplified version of `templates/core/events/display/conference/base.html``
+  * `templates/core/events/display/better.html` - child template, extends `templates/core/events/display/conference/base.html`
   * `templates/core/events/timetable/display/better.html` - shared by LPC administrators and tweaked
 * modified installed versions of two files to add "better" as a theme option. 
   * `/opt/indico/.venv/local/lib/python2.7/site-packages/indico/modules/events/themes.yaml`
