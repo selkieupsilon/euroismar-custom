@@ -202,7 +202,7 @@
      # After all that silliness we can go ahead and create our table.
      #}
     <tr class="better-lpcttday"><th></th><th colspan={{ roomlist|length }}>
-	<h4>{{day|format_date(format='medium', timezone=timezone)}}</h4></th></tr>
+	<a name='{{day|format_date(format="yyyyMMdd")}}'></a><h4>{{day|format_date(format='medium', timezone=timezone)}}</h4></th></tr>
     <tr class="better-lpctthdr"><th>Time</th>
     {% for room in roomlist %} 
         <th> {{ room }} </th> {# removed sort to preserve list order #}
