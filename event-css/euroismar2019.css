@@ -176,7 +176,17 @@ ul.steps li.completed .text {
     background: #CCC
 }
 
+/* Timetable colours */
+
+a:hover b {
+  color: #6bc128;
+}
+
 /* ########################### TYPEFACES (regrouped for consistency) ########################### */
+
+body {
+  font-family: "Roboto", "Liberation Sans", sans-serif;
+} 
 
 .conference-page, .conference-page .description, .conference-page .infogrid, 
 .dialog-page header .page-info, .management-page header .page-info, .fixed-width-standalone-page header .page-info, 
@@ -225,6 +235,10 @@ ul.steps li.completed .text {
 
 
 /* ######################################### STYLES ######################################### */
+
+body {
+  background: #fff;
+}
 
 /* ----------- Styles for the conference header ----------- */
 

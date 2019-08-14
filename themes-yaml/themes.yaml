@@ -44,7 +44,6 @@ definitions:
   # add better program view here based on Linux Plumbers Conference (LPC)
   better:
     event_types: [conference, meeting]
-    stylesheet: compact.scss
     tt-template: better.html
     title: Better style
     user_visible: true

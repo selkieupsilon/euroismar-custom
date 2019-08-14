@@ -96,7 +96,7 @@
       	    {% if speakers %}
                 <br> {{ render_speakers(speakers) }}
        	    {% endif %}
-	    <span class="lpctt"><br>{{ room }}</span> {# hide with CSS for normal screen, show for mobiles #}
+	    <span class="better-lpctt"><br>{{ room }}</span> {# hide with CSS for normal screen, show for mobiles #}
             </td>
 	{% endif %}
     {% else %}
@@ -108,7 +108,7 @@
  # Let's try to make a tracks header.
  #}
 {%- macro render_track(session) -%}
-    <td bgcolor={{session.background_color}} style="color: {{session.text_color}}">
+    <td style="color: #{{session.text_color}}; background: #{{session.background_color}};">
 	{{session.title}}
     </td>
 {%- endmacro -%}

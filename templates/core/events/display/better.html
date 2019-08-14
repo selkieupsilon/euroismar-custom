@@ -1,79 +1,63 @@
-{% from 'events/display/common/_legacy.html' import render_event_time, render_location %}
-{% from 'events/display/common/_manage_button.html' import render_manage_button %}
+{% extends 'layout/conference_page_base.html' %}
 
-<table class= "eventHeader">
-    <tr>
-        <td>
-        <div style="font-weight:bold;">
-            {{ render_manage_button(event, 'EVENT', toggle_notes=false, show_note_operations=true) }}
-            {% if event.has_note %}
-                <div class="toolbar right thin">
-                    <div class="group">
-                        <a href="{{ url_for('event_notes.view', event) }}" class="i-button normal-button">
-                            {% trans %}Minutes{% endtrans %}
+{% from 'events/display/_event_header_message.html' import render_event_header_msg %}
+
+{%- macro _format_event_date(event) -%}
+    {% set start_dt = event.start_dt_display.astimezone(event.display_tzinfo) %}
+    {% set end_dt = event.end_dt_display.astimezone(event.display_tzinfo) %}
+    {% if start_dt.date() == end_dt.date() %}
+        {{ start_dt | format_date('long') }}
+    {% elif start_dt.year == end_dt.year and start_dt.month == end_dt.month %}
+        {{ start_dt.day }}-{{ end_dt.day }} {{ start_dt | format_date('MMMM yyyy') }}
+    {% else %}
+        {% trans start=start_dt|format_date('long'), end=end_dt|format_date('long') -%}
+            {{ start }} to {{ end }}
+        {%- endtrans %}
+    {% endif %}
+{%- endmacro -%}
+
+
+{% block page %}
+    <div class="conf clearfix">
+        <div class="confheader clearfix" style="background: #f1edfc; border-color: #f1edfc;"> {# {{ conf_layout_params.bg_color_css }} #}
+            <div class="confTitleBox clearfix" style="background: #f1edfc; border-color: #f1edfc;"> {# {{ conf_layout_params.bg_color_css }} #}
+                <div class="confTitle">
+                    <h1>
+                        <a href="{{ event.url }}">
+                            <span class="conference-title-link" style="color: #74ae1c;"> {# {{ conf_layout_params.text_color_css }} #}
+                                {% if event.has_logo %}
+                                    <div class="confLogoBox">
+                                       <img src="{{ event.logo_url }}" alt="{{ event.title }}" border="0" class="confLogo">
+                                    </div>
+                                {% endif %}
+                                <span itemprop="title">{{ event.title }}</span>
+                            </span>
                         </a>
+                    </h1>
+               </div>
+            </div>
+        </div>
+        <h2>Lectures</h2>
+            <center>
+                <table class="dayList" cellpadding="0">
+                    {# timetable starts here #}
+                    {{ template_hook('meeting-body', event=event) }} 
+                </table>
+            </center>
+
+
+            <div class="confBodyBox clearfix {{ 'event-locked' if event.is_locked }}">
+                <div class="mainContent">
+                    <div class="col2">
+                        {{ super() }}
                     </div>
                 </div>
-            {% endif %}
-            {{ event.title }}
+            </div>
         </div>
-        <br>
-        {{ render_event_time(event, timezone) }}
-        <br>
-        {{ render_location(event) }}
-        <br><br>
-        </td>
-        <td style="width: 1%; white-space: nowrap;">
-        <table class="headerLegendsBorder" cellpadding="1" align="right">
-        <tr>
-            <td>
-                <table class="headerLegendsContent" cellpadding="2">
-                <tr>
-                    <td>
-                        <table>
-                            <tr>
-                                <td class="sessionsLegend">
-                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                </td>
-                                <td class="titleClass">: Sessions</td>
-                            </tr>
-                        </table>
-                    </td>
-                    <td>
-                        <table cellspacing="0">
-                            <tr>
-                                <td class="contribsLegendSilver">
-                                    &nbsp;&nbsp;&nbsp;
-                                </td>
-                                <td>/</td>
-                                <td class="contribsLegendGrey">
-                                    &nbsp;&nbsp;&nbsp;
-                                </td>
-                                <td class="titleClass">: Talks</td>
-                            </tr>
-                        </table>
-                    </td>
-                    <td>
-                        <table>
-                            <tr>
-                                <td class="breaksLegend">
-                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                </td>
-                                <td class="titleClass">: Breaks</td>
-                            </tr>
-                        </table>
-                    </td>
-                </tr>
-                </table>
-            </td>
-        </tr>
-        </table>
-        </td>
-    </tr>
-</table>
-
-<center>
-    <table class="dayList" cellpadding="0">
-        {{ template_hook('meeting-body', event=event) }}
-    </table>
-</center>
+        <script>
+            $(document).ready(function() {
+                $('h1').mathJax();
+            });
+        </script>
+    </div>
+{% endblock %}
