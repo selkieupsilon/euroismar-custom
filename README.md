@@ -35,14 +35,17 @@ Updated for [Indico 2.2](https://getindico.io/). Github repo https://github.com/
 
 ## Mobile-friendly timetable
 Based on example from [Linux Plumbers Conference](https://linuxplumbersconf.org/).
-Seems to be a modification of the "compact" or "nicecompact" theme that is built into Indico. Original templates called `compact.html` [link](https://github.com/search?utf8=%E2%9C%93&q=repo%3Aindico%2Findico+filename%3Acompact.html&type=Code&ref=advsearch&l=&l=) to search in Indico project for files named "compact.html".
+Originally appears to be a modification of the "compact" or "nicecompact" theme that is built into Indico. Original templates called `compact.html` [link](https://github.com/search?utf8=%E2%9C%93&q=repo%3Aindico%2Findico+filename%3Acompact.html&type=Code&ref=advsearch&l=&l=) to search in Indico project for files named "compact.html".
+Subsequently changed top of page and CSS to better match rest of EUROISMAR website. A number of colours were hardcoded to work around the `conf_layout_params not found` error.
 
 * added templates 
-  * `templates/core/events/display/better.html` - same as `compact.html`
-  * `templates/core/events/timetable/display/better.html` - shared by LPC administrators
-* modified installed versions of two files to add "better" as a theme option:
+  * `templates/core/events/display/better.html` - simplified version of `templates/core/events/display/conference/base.html``
+  * `templates/core/events/timetable/display/better.html` - shared by LPC administrators and tweaked
+* modified installed versions of two files to add "better" as a theme option. 
   * `/opt/indico/.venv/local/lib/python2.7/site-packages/indico/modules/events/themes.yaml`
   * `/opt/indico/.venv/lib/python2.7/site-packages/indico/web/static/dist/manifest.json`
+* as usual touch WGSI file to reload and see changes.
+* added rules to event CSS to provide responsive mobile-friendly timetable resizing.
 
 This "feature" is definitely better achieved as a plugin but currently hardcoded.
 
