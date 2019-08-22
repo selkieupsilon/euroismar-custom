@@ -69,6 +69,13 @@ if ($(".abstractbook-button")[0]){
     });
 } 
 
+// add event to track abstract book downloads
+if ($(".flyer-button")[0]){
+    ($(".flyer-button")[1]).addEventListener("click", function(){
+        ga("send", "event", "PDFdownloads", "click","Program flyer download");
+    });
+} 
+
 // hide unscheduled time message, especially for posters
 if ( $('.time-info')[0].innerHTML == 'Not scheduled' ) {
   $('.time-data')[0].innerHTML = ''
