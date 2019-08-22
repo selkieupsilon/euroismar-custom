@@ -25,13 +25,18 @@ Updated for [Indico 2.2](https://getindico.io/). Github repo https://github.com/
 * added extra instructions for abstract submitters for Markdown/LaTeX superscripts and subscripts (submission.html template)
 * branded login page to ensure that visitors know they are still on EUROISMAR site (login_page.html template)
 * hardcoded error page to return to EUROISMAR homepage instead of Indico category view (error.html)
-* added event to track click through of sponsorship brochure and registration via Google Analytics (footer.html)
-  * has to be in footer since DOM needs to be in place for events to be attached. Normal JS include adds into header.
-  * (suspected) cannot use extend footer.html due to escaping by Jinja leads to dropping of any <script></script> tags added to footer.html
+* added event to track these events via Google Analytics: (footer.html)
+  * download of sponsorship brochure 
+  * click through to registration form by GDCh/waiting list 
+  * download of abstract book
+  * Notes:
+    * has to be in footer since DOM needs to be in place for events to be attached. Normal JS include adds into header.
+    * (suspected) cannot use extend footer.html due to escaping by Jinja leads to dropping of any <script></script> tags added to footer.html
 * hardcoded Indico logos to return to EUROISMAR homepage (header.html template extension)
 * Removed Indico in the title since it shows up in title on Google searches (indico_base.html)
 * Changed site favicon to EUROISMAR logo (indico_base.html)
 * Added viewport meta tag (indico_base.html) - this can in principle now be changed by an extension of the template in {% block extra_meta_tags %}
+* Used jQuery to remove "Not scheduled" notice from all pages, mainly for posters. (footer.html)
 
 ## Mobile-friendly timetable
 Based on example from [Linux Plumbers Conference](https://linuxplumbersconf.org/).

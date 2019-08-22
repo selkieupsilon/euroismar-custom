@@ -68,6 +68,12 @@ if ($(".abstractbook-button")[0]){
         ga("send", "event", "PDFdownloads", "click","Abstract book download");
     });
 } 
+
+// hide unscheduled time message, especially for posters
+if ( $('.time-info')[0].innerHTML == 'Not scheduled' ) {
+  $('.time-data')[0].innerHTML = ''
+}
+
 </script>
 
 {% include '_outdated_browser.html' %}
