@@ -1,0 +1,9 @@
+/*.header {background-color: #f1edfc;}*/
+
+body { background-color: #473e43; }
+
+.content .album.active .thumbimg, .content .album:hover .thumbimg, .content .photo.active .thumbimg, .content .photo:hover .thumbimg { border-color: #6bc128; }
+
+.header .button:hover .iconic, .content .photo .overlay a .iconic { fill: #6bc128; }
+
+.content .album .overlay h1, .content .photo .overlay h1, .content .album .overlay a, .content .photo .overlay a { color: #6bc128; }
