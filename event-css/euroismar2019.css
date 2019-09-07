@@ -104,12 +104,12 @@ div.page-header-dark {
     background: #f1edfc;
 }
 
-.brochure-button > a,.register-button > a,.abstractbook-button > a,.flyer-button > a {
+.brochure-button > a,.register-button > a,.abstractbook-button > a,.flyer-button > a,.gallery-button > a {
   color:#f1edfc;
   background-color: #6bc128;
 }
 
-.brochure-button > a:hover,.register-button > a:hover,.abstractbook-button > a:hover,.flyer-button > a:hover {
+.brochure-button > a:hover,.register-button > a:hover,.abstractbook-button > a:hover,.flyer-button > a:hover,.gallery-button > a:hover {
   background: #473e43;
   transition: color 0.5s;
 }
@@ -435,7 +435,7 @@ li.resmenuItem {  /* normally hide icon */
   margin-top: 0px;
 }
 
-.brochure-button,.register-button,.abstractbook-button, .flyer-button {
+.brochure-button,.register-button,.abstractbook-button, .flyer-button, .gallery-button {
   padding: 30px;
   border-radius: 30px;
   text-align: center;
